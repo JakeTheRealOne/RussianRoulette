@@ -91,7 +91,7 @@ def ask_papers() -> bool:
         print_human("SIGN RIGHT THERE -> ")
         name = input("")
     papers_signed(edition, name)
-    return edition == "Linux"
+    return edition
 
 
 def display(free: set, bullet: int = None) -> None:
@@ -122,7 +122,7 @@ def dealer_dies():
     exit(0)
 
 
-def round():
+def round() -> bool:
     """
     execute one round of russian roulette
     """
@@ -140,7 +140,7 @@ def round():
             clear_terminal()
             display(free, rand)
             print_human("You died\n")
-            exit(1)
+            return True
         else:
             free.remove(int(choice))
             clear_terminal()
@@ -162,6 +162,7 @@ def round():
                 print_human("The slot didn't seem to have a bullet.\n")
                 free.remove(rand2)
                 time.sleep(2)
+    return False
 
 
 def check_dealer_status() -> None:
@@ -189,12 +190,16 @@ def main():
     loading_screen.show_title(True)
     check_dealer_status()
     i_want_to_live = ask_play()
-    if (not i_want_to_live):
-        ask_papers()
+    if (i_want_to_live):
+        print_human("Good decision.")
+        return
+    else:
+        os_name = ask_papers()
 
-    while (not i_want_to_live):
-        i_want_to_live = round()
-    print("Good decision.")
+    dead = False
+    while (not dead):
+        dead = round()
+    os.system(f"python3 source/dying.py {os_name} &")
 
 if __name__ == "__main__":
     main()

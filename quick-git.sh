@@ -1,4 +1,5 @@
 cd $HOME/Devloper/Games/RussianRoulette
+rm papers/*
 echo "alive" > .dealer_status
 git add .
 echo "Enter the main purpose of your commit: "
