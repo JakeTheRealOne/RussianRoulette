@@ -8,7 +8,7 @@ git commit -m "$purpose"
 git push origin master
 if [ $? ]; then
     $HOME/.config/eww/spec/waiting_notification.sh &
-    action=$(notify-send -a " repo: 2048" "the config has been saved on GitHub" -A "default=open link")
+    action=$(notify-send -a " repo: Russian Roulette" "the config has been saved on GitHub" -A "default=open link")
     if [[ $action == "default" ]]; then
         firefox --new-tab "https://github.com/JakeTheRealOne" &
     fi
