@@ -11,10 +11,12 @@ import time
 import loading_screen
 
 def CONTRACT(edition: str) -> str:
-    return (f"Welcome in a basic game of Russian Roulette - {edition} edition" +
-        "\nBefore we start, You must sign a contract" +
-        " rules:\n--- CONTRACT ---\n1. If you lose, you " +
-        "die\n2. If I lose, I die\n3. By signing this contract, You understand the risks taken during this game")
+    return (
+      f"Welcome in a basic game of Russian Roulette - {edition} edition"
+      "\nBefore we start, You must sign a contract"
+      " rules:\n--- CONTRACT ---\n1.  If you lose, you risk having your system erased.\n"
+      "2.  That's it."
+    )
 
 
 
@@ -187,7 +189,7 @@ def main():
     """
     run the program
     """
-    loading_screen.show_title(True)
+    loading_screen.show_title(debug_mode=False)
     check_dealer_status()
     i_want_to_live = ask_play()
     if (i_want_to_live):

